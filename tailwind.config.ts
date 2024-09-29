@@ -16,6 +16,9 @@ export default {
           '"Noto Color Emoji"',
         ],
       },
+      boxShadow: {
+        customShadow: "currentcolor 0px 0px 0px 3px inset",
+      },
     },
   },
   plugins: [],
