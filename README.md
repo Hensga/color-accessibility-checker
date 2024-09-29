@@ -8,11 +8,7 @@ Ein interaktives Werkzeug zur Überprüfung von Farbkontrasten gemäß den WCAG-
 - [Funktionen](#funktionen)
 - [Installation](#installation)
 - [Verwendung](#verwendung)
-- [Projektstruktur](#projektstruktur)
 - [Technologien](#technologien)
-- [Beitragen](#beitragen)
-- [Lizenz](#lizenz)
-- [Danksagungen](#danksagungen)
 
 ## Überblick
 
@@ -34,7 +30,7 @@ Der **Farbkontrast-Checker** ist ein Werkzeug für Designer und Entwickler, um s
 1. **Repository klonen**
 
    ```bash
-   git clone https://github.com/dein-benutzername/farbkontrast-checker.git
+   git clone https://github.com/Hensga/color-accessibility-checker.git
    cd farbkontrast-checker
 
    ```
@@ -51,7 +47,7 @@ Der **Farbkontrast-Checker** ist ein Werkzeug für Designer und Entwickler, um s
    ```bash
    npm start
 
-   Öffne [http://localhost:3000](http://localhost:3000) im Browser, um die Anwendung zu sehen.
+   Öffne http://localhost:3000 im Browser, um die Anwendung zu sehen.
    ```
 
 ## Verwendung
@@ -73,21 +69,6 @@ Der **Farbkontrast-Checker** ist ein Werkzeug für Designer und Entwickler, um s
 4. **Farbwerte kopieren**
 
    Klicke auf das Kopier-Icon neben den Eingabefeldern, um die Farbwerte zu kopieren.
-
-## Projektstruktur
-
-src/
-├── components/
-│ ├── Header.tsx
-│ ├── ColorInput.tsx
-│ ├── ColorBlindnessSimulation.tsx
-│ └── NavbarTest.tsx
-├── hooks/
-│ └── useContrast.ts
-├── utils/
-│ └── colorBlindnessDescriptions.ts
-├── App.tsx
-└── index.tsx
 
 ## Technologien
 
