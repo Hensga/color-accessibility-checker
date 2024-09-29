@@ -14,15 +14,15 @@ export const meta: MetaFunction = () => {
 };
 
 function hexToRgb(hex: string) {
-  // Entferne das "#" falls vorhanden
+  // Entfernt das "#" falls vorhanden
   hex = hex.replace("#", "");
 
-  // Überprüfe, ob der Hex-Wert 3 oder 6 Zeichen lang ist
+  // Überprüft, ob der Hex-Wert 3 oder 6 Zeichen lang ist
   if (!/^[0-9A-Fa-f]{3}$|^[0-9A-Fa-f]{6}$/.test(hex)) {
     return null; // Gib `null` zurück, wenn der Wert ungültig ist
   }
 
-  // Falls der Hex-Wert 3 Zeichen lang ist, wiederhole die Zeichen
+  // Falls der Hex-Wert 3 Zeichen lang ist, wird er in 6 Zeichen umgewandelt
   if (hex.length === 3) {
     hex = hex
       .split("")
@@ -55,37 +55,36 @@ function getTextColorBasedOnBgColor(bgColor: string) {
 export default function Index() {
   const [primaryColor, setPrimaryColor] = React.useState("#23429c");
   const [secondaryColor, setSecondaryColor] = React.useState("#d8ba60");
-  const [contrastValue, setContrastValue] = React.useState<string>("");
 
   useEffect(() => {
-    // Setze die Randfarbe
+    // Setzt die Bordercolor
     const borderElement = document.querySelector(
       ".border-with-color"
     ) as HTMLElement;
     if (borderElement) borderElement.style.borderColor = secondaryColor;
 
-    // Hole alle Elemente mit der Klasse .failed-container
+    // Holt alle Elemente mit der Klasse .failed-container
     const failedContainers = document.querySelectorAll(".failed-container");
 
     failedContainers.forEach((container) => {
-      // Überprüfe, ob das Element ein HTMLElement ist
+      // Überprüft, ob das Element ein HTMLElement ist
       if (container instanceof HTMLElement) {
         const rgb = hexToRgb(secondaryColor);
 
         if (rgb) {
-          // Setze die Hintergrundfarbe
+          // Setzt die Hintergrundfarbe
           container.style.backgroundColor = secondaryColor;
 
-          // Bestimme die passende Textfarbe basierend auf der Helligkeit
+          // Bestimmt die passende Textfarbe basierend auf der Helligkeit
           const textColor = getTextColorBasedOnBgColor(secondaryColor);
           container.style.color = textColor;
         } else {
-          return null; // Gib `null` zurück, wenn der Wert ungültig ist
+          return null; // Gibt `null` zurück, wenn der Wert ungültig ist
         }
       }
     });
 
-    // Setze Hintergrundfarbe und Textfarbe des `body`, wenn die Farben gültig sind
+    // Setzt Hintergrundfarbe und Textfarbe des `body`, wenn die Farben gültig sind
     const bodyBgColor = hexToRgb(primaryColor);
     const bodyTextColor = hexToRgb(secondaryColor);
 
