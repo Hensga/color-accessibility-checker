@@ -1,40 +1,102 @@
-# Welcome to Remix!
+# Farbkontrast-Checker
 
-- 📖 [Remix docs](https://remix.run/docs)
+Ein interaktives Werkzeug zur Überprüfung von Farbkontrasten gemäß den WCAG-Richtlinien, mit zusätzlichen Funktionen wie Farbenblindheitssimulationen und Kopierfunktion.
 
-## Development
+## Inhaltsverzeichnis
 
-Run the dev server:
+- [Überblick](#überblick)
+- [Funktionen](#funktionen)
+- [Installation](#installation)
+- [Verwendung](#verwendung)
+- [Projektstruktur](#projektstruktur)
+- [Technologien](#technologien)
+- [Beitragen](#beitragen)
+- [Lizenz](#lizenz)
+- [Danksagungen](#danksagungen)
 
-```shellscript
-npm run dev
-```
+## Überblick
 
-## Deployment
+Der **Farbkontrast-Checker** ist ein Werkzeug für Designer und Entwickler, um sicherzustellen, dass ihre Farbkombinationen den Zugänglichkeitsstandards entsprechen. Es ermöglicht die Überprüfung von Farbkontrasten gemäß den [WCAG 2.1 Richtlinien](https://www.w3.org/TR/WCAG21/) und bietet zusätzliche Funktionen wie:
 
-First, build your app for production:
+- **Farbenblindheitssimulationen**: Zeigt an, wie Farbkombinationen für Personen mit verschiedenen Formen von Farbenblindheit aussehen.
+- **Kopierfunktion**: Einfache Kopiermöglichkeit der Farbwerte per Klick.
+- **Interaktive Anzeige**: Zeigt die Konformität der Farbkombinationen mit den WCAG-Konformitätsstufen AA und AAA für normalen und großen Text.
 
-```sh
-npm run build
-```
+## Funktionen
 
-Then run the app in production mode:
+- **Kontrastberechnung**: Berechnet das Kontrastverhältnis zwischen zwei Farben und zeigt es an.
+- **Farbenblindheitssimulationen**: Simuliert, wie die ausgewählten Farben für Menschen mit verschiedenen Formen von Farbenblindheit aussehen, einschließlich Protanopie, Deuteranopie und mehr.
+- **Kopierfunktion**: Einfaches Kopieren von Farbwerten durch Klick auf ein Kopier-Icon neben den Eingabefeldern.
+- **Responsive Design**: Optimiert für verschiedene Bildschirmgrößen und Geräte.
 
-```sh
-npm start
-```
+## Installation
 
-Now you'll need to pick a host to deploy it to.
+1. **Repository klonen**
 
-### DIY
+   ```bash
+   git clone https://github.com/dein-benutzername/farbkontrast-checker.git
+   cd farbkontrast-checker
 
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
+   ```
 
-Make sure to deploy the output of `npm run build`
+2. **Abhängigkeiten installieren**
 
-- `build/server`
-- `build/client`
+   ```bash
+   npm install
 
-## Styling
+   ```
 
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+3. **Lokalen Entwicklungsserver starten**
+
+   ```bash
+   npm start
+
+   Öffne [http://localhost:3000](http://localhost:3000) im Browser, um die Anwendung zu sehen.
+   ```
+
+## Verwendung
+
+1. **Farben auswählen**
+
+   Gib die Primär- und Sekundärfarbe als Hex-Farbwerte in die entsprechenden Eingabefelder ein.
+
+2. **Kontrastverhältnis überprüfen**
+
+   Das Tool berechnet automatisch das Kontrastverhältnis und zeigt es an.  
+   Die WCAG-Konformitätsstufen werden für normalen und großen Text angezeigt.
+
+3. **Farbenblindheitssimulationen anzeigen**
+
+   Sieh dir an, wie deine Farbkombinationen für Menschen mit verschiedenen Formen von Farbenblindheit aussehen.  
+   Nutze die Tooltips, um mehr über die einzelnen Farbenblindheitstypen zu erfahren.
+
+4. **Farbwerte kopieren**
+
+   Klicke auf das Kopier-Icon neben den Eingabefeldern, um die Farbwerte zu kopieren.
+
+## Projektstruktur
+
+src/
+├── components/
+│ ├── Header.tsx
+│ ├── ColorInput.tsx
+│ ├── ColorBlindnessSimulation.tsx
+│ └── NavbarTest.tsx
+├── hooks/
+│ └── useContrast.ts
+├── utils/
+│ └── colorBlindnessDescriptions.ts
+├── App.tsx
+└── index.tsx
+
+## Technologien
+
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **wcag-contrast**
+- **color-blind**
+- **react-tooltip**
+- **Heroicons**
+
+Erstellt mit ❤️ von [Henning Huth](www.henninghuth.dev).
