@@ -8,8 +8,11 @@ import CopyText from "~/components/CopyText";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Color Accessibility Checker" },
+    {
+      name: "description",
+      content: "Check colors for accessibility and contrast.",
+    },
   ];
 };
 
