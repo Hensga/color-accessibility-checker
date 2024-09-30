@@ -6,6 +6,17 @@ import Divider from "~/components/Divider";
 import NavbarTest from "~/components/NavbarTest";
 import CopyText from "~/components/CopyText";
 import ColorPicker from "~/components/ColorPicker";
+import type { MetaFunction } from "@remix-run/node";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Color Accessibility Checker" },
+    {
+      name: "description",
+      content: "Check colors for accessibility and contrast.",
+    },
+  ];
+};
 
 export default function Index() {
   const [primaryColor, setPrimaryColor] = useState("#23429c");
