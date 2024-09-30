@@ -15,7 +15,7 @@ export default function NavbarTest() {
   }, []);
 
   return (
-    <div className="navbar w-full h-40 bg-gray-200 flex place-items-center justify-center shadow-customShadow rounded-md">
+    <div className="navbar w-full h-40 flex place-items-center justify-center shadow-customShadow rounded-md">
       <div className="navbar_elements flex text-3xl font-bold">
         <span className="pr-2">Time: </span>
         <span>{time}</span>
