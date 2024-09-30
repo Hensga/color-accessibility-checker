@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { ClipboardIcon, CheckIcon } from "@heroicons/react/24/outline"; // Falls du Heroicons verwendest
 
 interface ColorPickerProps {
@@ -18,6 +18,19 @@ export default function ColorPicker({
   const [copiedPrimary, setCopiedPrimary] = useState(false);
   const [copiedSecondary, setCopiedSecondary] = useState(false);
 
+  // Lokale Zustände für Input-Felder
+  const [localPrimary, setLocalPrimary] = useState(primaryColor);
+  const [localSecondary, setLocalSecondary] = useState(secondaryColor);
+
+  // Aktualisiere lokale Zustände, wenn die Props sich ändern
+  useEffect(() => {
+    setLocalPrimary(primaryColor);
+  }, [primaryColor]);
+
+  useEffect(() => {
+    setLocalSecondary(secondaryColor);
+  }, [secondaryColor]);
+
   const copyToClipboard = (
     text: string,
     setCopied: React.Dispatch<React.SetStateAction<boolean>>
@@ -29,7 +42,7 @@ export default function ColorPicker({
   };
 
   return (
-    <div className="flex flex-col sm:flex-row flex-wrap gap-6 sm:gap-12">
+    <div className="flex flex-col sm:flex-row flex-wrap gap-6 sm:gap-12 pb-10">
       {/* Hintergrundfarbe */}
       <div className="flex-1 min-w-0 flex-shrink">
         <label htmlFor="backgroundColor" className="w-full">
@@ -38,20 +51,24 @@ export default function ColorPicker({
         <div className="py-4 px-8 flex-1 rounded-md flex justify-center items-center shadow-customShadow min-w-0 flex-shrink">
           <input
             id="backgroundColor"
-            value={primaryColor}
+            autoComplete="off"
+            value={localPrimary}
             type="text"
-            onChange={(e) => onPrimaryColorChange(e.target.value)}
+            onChange={(e) => {
+              setLocalPrimary(e.target.value);
+              onPrimaryColorChange(e.target.value);
+            }}
             className="w-full"
           />
           <button
-            onClick={() => copyToClipboard(primaryColor, setCopiedPrimary)}
+            onClick={() => copyToClipboard(localPrimary, setCopiedPrimary)}
             className="ml-2"
             aria-label="Farbwert kopieren"
           >
             {copiedPrimary ? (
               <CheckIcon className="h-12 w-12" />
             ) : (
-              <ClipboardIcon className={`h-12 w-12 text-[${primaryColor}]`} />
+              <ClipboardIcon className={`h-12 w-12 text-[${localPrimary}]`} />
             )}
           </button>
         </div>
@@ -64,20 +81,24 @@ export default function ColorPicker({
         <div className="py-4 px-8 flex-1 flex rounded-md justify-center items-center shadow-customShadow min-w-0 flex-shrink">
           <input
             id="textColor"
-            value={secondaryColor}
+            autoComplete="off"
+            value={localSecondary}
             type="text"
-            onChange={(e) => onSecondaryColorChange(e.target.value)}
+            onChange={(e) => {
+              setLocalSecondary(e.target.value);
+              onSecondaryColorChange(e.target.value);
+            }}
             className="w-full"
           />
           <button
-            onClick={() => copyToClipboard(secondaryColor, setCopiedSecondary)}
+            onClick={() => copyToClipboard(localSecondary, setCopiedSecondary)}
             className="ml-2"
             aria-label="Farbwert kopieren"
           >
             {copiedSecondary ? (
               <CheckIcon className="h-12 w-12" />
             ) : (
-              <ClipboardIcon className={`h-12 w-12 text-[${primaryColor}]`} />
+              <ClipboardIcon className={`h-12 w-12 text-[${localPrimary}]`} />
             )}
           </button>
         </div>

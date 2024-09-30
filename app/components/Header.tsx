@@ -1,6 +1,5 @@
 // components/Header.tsx
 import { useContrast } from "../hooks/useContrast";
-import ColorBlindnessSimulation from "./ColorBlindnessSimulation";
 
 interface HeaderProps {
   title: string;
@@ -86,12 +85,6 @@ export default function Header({
           </div>
         </div>
       </div>
-
-      {/* Farbenblindheitssimulation */}
-      <ColorBlindnessSimulation
-        primaryColor={primaryColor}
-        secondaryColor={secondaryColor}
-      />
     </header>
   );
 }

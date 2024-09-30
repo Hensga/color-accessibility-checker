@@ -1,107 +1,20 @@
-import React, { useEffect } from "react";
-import type { MetaFunction } from "@remix-run/node";
-import ColorPicker from "~/components/ColorPicker";
+// pages/index.tsx
+import { useEffect, useState } from "react";
 import Header from "~/components/Header";
+import ColorBlindnessSimulation from "~/components/ColorBlindnessSimulation";
 import Divider from "~/components/Divider";
 import NavbarTest from "~/components/NavbarTest";
 import CopyText from "~/components/CopyText";
-
-export const meta: MetaFunction = () => {
-  return [
-    { title: "Color Accessibility Checker" },
-    {
-      name: "description",
-      content: "Check colors for accessibility and contrast.",
-    },
-  ];
-};
-
-function hexToRgb(hex: string) {
-  // Entfernt das "#" falls vorhanden
-  hex = hex.replace("#", "");
-
-  // Überprüft, ob der Hex-Wert 3 oder 6 Zeichen lang ist
-  if (!/^[0-9A-Fa-f]{3}$|^[0-9A-Fa-f]{6}$/.test(hex)) {
-    return null; // Gib `null` zurück, wenn der Wert ungültig ist
-  }
-
-  // Falls der Hex-Wert 3 Zeichen lang ist, wird er in 6 Zeichen umgewandelt
-  if (hex.length === 3) {
-    hex = hex
-      .split("")
-      .map((char) => char + char)
-      .join("");
-  }
-
-  // Umwandlung in RGB
-  const bigint = parseInt(hex, 16);
-  const r = (bigint >> 16) & 255;
-  const g = (bigint >> 8) & 255;
-  const b = bigint & 255;
-
-  return { r, g, b };
-}
-
-function getLuminance({ r, g, b }: { r: number; g: number; b: number }) {
-  // Berechnung der Helligkeit anhand der Standard-Luminanz-Formel
-  return 0.299 * r + 0.587 * g + 0.114 * b;
-}
-
-function getTextColorBasedOnBgColor(bgColor: string) {
-  const rgb = hexToRgb(bgColor);
-  const luminance = getLuminance(rgb);
-
-  // Wenn die Helligkeit hoch ist, setze die Textfarbe auf Schwarz, sonst auf Weiß
-  return luminance > 186 ? "black" : "white"; // Schwellenwert 186 ist eine gängige Empfehlung
-}
+import ColorPicker from "~/components/ColorPicker";
 
 export default function Index() {
-  const [primaryColor, setPrimaryColor] = React.useState("#23429c");
-  const [secondaryColor, setSecondaryColor] = React.useState("#d8ba60");
+  const [primaryColor, setPrimaryColor] = useState("#23429c");
+  const [secondaryColor, setSecondaryColor] = useState("#d8ba60");
 
   useEffect(() => {
-    // Setzt die Bordercolor
-    const borderElement = document.querySelector(
-      ".border-with-color"
-    ) as HTMLElement;
-    if (borderElement) borderElement.style.borderColor = secondaryColor;
-
-    // Holt alle Elemente mit der Klasse .failed-container
-    const failedContainers = document.querySelectorAll(".failed-container");
-
-    failedContainers.forEach((container) => {
-      // Überprüft, ob das Element ein HTMLElement ist
-      if (container instanceof HTMLElement) {
-        const rgb = hexToRgb(secondaryColor);
-
-        if (rgb) {
-          // Setzt die Hintergrundfarbe
-          container.style.backgroundColor = secondaryColor;
-
-          // Bestimmt die passende Textfarbe basierend auf der Helligkeit
-          const textColor = getTextColorBasedOnBgColor(secondaryColor);
-          container.style.color = textColor;
-        } else {
-          return null; // Gibt `null` zurück, wenn der Wert ungültig ist
-        }
-      }
-    });
-
-    // Setzt Hintergrundfarbe und Textfarbe des `body`, wenn die Farben gültig sind
-    const bodyBgColor = hexToRgb(primaryColor);
-    const bodyTextColor = hexToRgb(secondaryColor);
-
-    if (bodyBgColor && bodyTextColor) {
-      document.body.style.backgroundColor = primaryColor;
-      document.body.style.color = secondaryColor;
-
-      document
-        .querySelector(".navbar")
-        ?.setAttribute(
-          "style",
-          `background-color: ${primaryColor}; color: ${secondaryColor}`
-        );
-    }
+    // Setze die Farben im DOM oder für andere Effekte
+    document.body.style.backgroundColor = primaryColor;
+    document.body.style.color = secondaryColor;
   }, [primaryColor, secondaryColor]);
 
   return (
@@ -113,12 +26,20 @@ export default function Index() {
             primaryColor={primaryColor}
             secondaryColor={secondaryColor}
           />
+
           <ColorPicker
             primaryColor={primaryColor}
             secondaryColor={secondaryColor}
             onPrimaryColorChange={setPrimaryColor}
             onSecondaryColorChange={setSecondaryColor}
           />
+
+          {/* Farbenblindheitssimulation */}
+          <ColorBlindnessSimulation
+            primaryColor={primaryColor}
+            secondaryColor={secondaryColor}
+          />
+
           <Divider />
           <NavbarTest />
           <section className="flex gap-12 flex-col md:flex-row pb-20">
