@@ -80,4 +80,4 @@ Der **Farbkontrast-Checker** ist ein Werkzeug für Designer und Entwickler, um s
 - **react-tooltip**
 - **Heroicons**
 
-Erstellt mit ❤️ von [Henning Huth](www.henninghuth.dev).
+Erstellt mit ❤️ von [Henning Huth](https://henninghuth.dev).
