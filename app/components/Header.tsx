@@ -19,7 +19,7 @@ export default function Header({
 
   return (
     <header className="flex flex-col gap-4 pb-10">
-      <h1 className="text-4xl sm:text-6xl font-bold">{title}</h1>
+      <h1 className="text-3xl sm:text-6xl font-bold break-words">{title}</h1>
       <div className="flex flex-wrap items-end justify-between w-full gap-4 md:gap-0">
         <div className="flex items-end gap-10 md:gap-6">
           <div
@@ -29,9 +29,11 @@ export default function Header({
               color: secondaryColor,
             }}
           >
-            <span className="text-9xl font-bold w-['fit-content']">Aa</span>
+            <span className="text-7xl sm:text-9xl font-bold w-['fit-content']">
+              Aa
+            </span>
           </div>
-          <div className="flex gap-2 font-medium text-7xl">
+          <div className="flex gap-2 font-medium text-5xl sm:text-7xl">
             <span>{contrast}</span>
           </div>
         </div>

@@ -56,13 +56,13 @@ export default function Index() {
           <section className="flex gap-12 flex-col md:flex-row pb-20">
             <CopyText
               titleClassName="text-5xl font-bold pb-4 pt-12"
-              paragraphClassName="text-xl"
+              paragraphClassName="text-2xl"
               title="Example for Large Text"
               paragraph="Veniam fugiat occaecat minim excepteur non sint et nulla consequat nisi officia aliqua id in. Deserunt qui nostrud id consectetur ut esse labore reprehenderit sint nostrud aliquip laboris do. Ad ea velit veniam ex nulla laboris tempor eu esse incididunt sunt consectetur amet culpa."
             />
             <CopyText
               titleClassName="text-3xl font-medium pb-4 md:pt-12"
-              paragraphClassName="text-base"
+              paragraphClassName="text-xl"
               title="Example for Normal Text"
               paragraph="Veniam fugiat occaecat minim excepteur non sint et nulla consequat nisi officia aliqua id in. Deserunt qui nostrud id consectetur ut esse labore reprehenderit sint nostrud aliquip laboris do. Ad ea velit veniam ex nulla laboris tempor eu esse incididunt sunt consectetur amet culpa."
             />

@@ -14,7 +14,7 @@ export default function CopyText({
   return (
     <article>
       <h2 className={`text-3xl ${titleClassName}`}>{title}</h2>
-      <p className={`text-base ${paragraphClassName}`}>{paragraph}</p>
+      <p className={`${paragraphClassName}`}>{paragraph}</p>
     </article>
   );
 }
